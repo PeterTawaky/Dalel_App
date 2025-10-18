@@ -2,8 +2,8 @@
 
 import 'dart:async';
 
+import 'package:dalel_app/core/routes/app_routes.dart';
 import 'package:dalel_app/core/utils/app_text_styles.dart';
-import 'package:dalel_app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -23,7 +23,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
 
   void delayNavigation() {
     Future.delayed(const Duration(seconds: 3), () {
-      context.pushReplacement(AppRoutes.onBoarding);
+      context.push(AppRoutes.onBoardingView);
     });
   }
 
