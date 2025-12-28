@@ -1,3 +1,4 @@
+import 'package:dalel_app/core/database/cache/cache_helper.dart';
 import 'package:dalel_app/core/routes/app_routes.dart';
 import 'package:dalel_app/core/utils/app_assets.dart';
 import 'package:dalel_app/core/utils/app_strings.dart';
@@ -26,7 +27,10 @@ class OnBoardingViewBody extends StatelessWidget {
             Padding(
               padding: EdgeInsetsDirectional.only(end: 16.w(context)),
               child: TextButton(
-                onPressed: () => context.pushReplacement(AppRoutes.signInView),
+                onPressed: () {
+                  context.pushReplacement(AppRoutes.signInView);
+                  CacheHelper.setData(key: 'isOnBoardingVisited', value: true);
+                },
                 child: Text(
                   AppStrings.skip,
                   style: AppTextStyles.poppins300style16.copyWith(

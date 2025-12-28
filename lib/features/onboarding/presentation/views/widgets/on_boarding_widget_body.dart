@@ -1,4 +1,5 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+import 'package:dalel_app/core/database/cache/cache_helper.dart';
 import 'package:dalel_app/core/routes/app_routes.dart';
 import 'package:dalel_app/core/utils/app_assets.dart';
 import 'package:dalel_app/core/utils/app_durations.dart';
@@ -92,7 +93,13 @@ class _OnboardingWidgetBodyState extends State<OnboardingWidgetBody> {
                   children: [
                     CustomButton(
                       text: AppStrings.createAccount,
-                      onPressed: () => context.push(AppRoutes.signUpView),
+                      onPressed: () {
+                        context.push(AppRoutes.signUpView);
+                        CacheHelper.setData(
+                          key: 'isOnBoardingVisited',
+                          value: true,
+                        );
+                      },
                     ),
                     TextButton(
                       onPressed: () => context.go(AppRoutes.signInView),

@@ -1,11 +1,15 @@
+import 'package:dalel_app/core/database/cache/cache_helper.dart';
 import 'package:dalel_app/core/routes/router_generator.dart';
 import 'package:dalel_app/core/utils/app_colors.dart';
 import 'package:dalel_app/core/utils/app_text_styles.dart';
+import 'package:dalel_app/core/utils/device_utility.dart';
 import 'package:dalel_app/core/utils/extensions/num_extensions.dart';
+import 'package:dalel_app/flavors.dart';
 import 'package:flutter/material.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Dalel extends StatelessWidget {
+  final AppConfig config;
+  const Dalel({super.key, required this.config});
 
   @override
   Widget build(BuildContext context) {
@@ -30,4 +34,11 @@ class MyApp extends StatelessWidget {
       routerConfig: RouterGenerator.router,
     );
   }
+}
+
+setUpProject() {
+  WidgetsFlutterBinding.ensureInitialized();
+  DeviceUtility.lockOrientations();
+  DeviceUtility.hideStatusBar;
+  CacheHelper.cacheInit();
 }

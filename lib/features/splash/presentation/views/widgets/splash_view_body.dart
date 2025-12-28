@@ -2,6 +2,7 @@
 
 import 'dart:async';
 
+import 'package:dalel_app/core/database/cache/cache_helper.dart';
 import 'package:dalel_app/core/routes/app_routes.dart';
 import 'package:dalel_app/core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,11 @@ class _SplashViewBodyState extends State<SplashViewBody> {
 
   void delayNavigation() {
     Future.delayed(const Duration(seconds: 3), () {
-      context.push(AppRoutes.onBoardingView);
+      if (CacheHelper.getData(key: 'isOnBoardingVisited')??false) {
+        context.push(AppRoutes.signInView);
+      } else {
+        context.push(AppRoutes.onBoardingView);
+      }
     });
   }
 
